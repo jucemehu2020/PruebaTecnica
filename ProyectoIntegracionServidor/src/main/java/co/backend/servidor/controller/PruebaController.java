@@ -21,7 +21,7 @@ import co.backend.servidor.service.PruebaManagamentService;
  * @author julio
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping(value = "/base")
 public class PruebaController {
 

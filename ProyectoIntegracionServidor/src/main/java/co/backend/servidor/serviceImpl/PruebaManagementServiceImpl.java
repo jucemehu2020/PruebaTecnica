@@ -37,10 +37,11 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
         String invertida = "";
         prueba.setFuncion("Funcion Palindroma");
         prueba.setVariable_ingreso1(palabra);
-        for (int indice = palabra.length() - 1; indice >= 0; indice--) {
-            invertida += palabra.charAt(indice);
+        String estandarPalabra = palabra.toLowerCase();
+        for (int indice = estandarPalabra.length() - 1; indice >= 0; indice--) {
+            invertida += estandarPalabra.charAt(indice);
         }
-        if(palabra.equals(invertida)){                 
+        if(estandarPalabra.equals(invertida)){                 
             resultado = "Es una palabra palindroma";
         }else{
             resultado = "No es una palabra palindroma";
