@@ -15,6 +15,10 @@ public interface PruebaManagamentService {
     
     public ArrayList<Integer> serieFibonacci(int numero);
     
+    public String esPrimo(int numero);
+    
+    public Integer multiplosHasta(int numero_multiplo,int numero_hastas);
+    
     List<PruebaDTO> list();
     PruebaDTO listById(String id) throws ExecutionException, InterruptedException;
     Boolean add(PruebaDTO usuario);

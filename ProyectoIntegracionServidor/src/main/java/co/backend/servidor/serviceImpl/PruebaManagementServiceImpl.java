@@ -55,8 +55,7 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
         return guardar;
     }
     
-     public static int fibonacciRecursivo(int n) {
- 
+    public static int fibonacciRecursivo(int n) {
         if (n==0){
             return 0;  
         } else if(n==1) {
@@ -65,6 +64,29 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
             return fibonacciRecursivo(n-1) + fibonacciRecursivo(n-2);
         }
  
+    }
+     
+    @Override
+    public String esPrimo(int numero) {
+        if (numero == 0 || numero == 1 || numero == 4) {
+          return "No es primo";
+        }
+        for (int x = 2; x < numero / 2; x++) {
+          if (numero % x == 0)
+            return "No es primo";
+        }
+        return "Es primo";
+    }
+    
+    @Override
+    public Integer multiplosHasta(int numero_multiplo,int numero_hastas) {
+        int contador = 0;
+        for (int i = numero_multiplo; i <= numero_hastas; i++) {
+            if (i%numero_multiplo==0) {
+                contador = contador + 1;
+            }
+        }
+        return contador;
     }
     
     private Map<String, Object> getDocData(PruebaDTO usuario) {
