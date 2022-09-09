@@ -26,16 +26,15 @@ import java.time.Instant;
 @Service
 public class PruebaManagementServiceImpl implements PruebaManagamentService {
 
+    private PruebaDTO prueba = new PruebaDTO();
+    private String resultado = "";
+    
     @Autowired
     private FirebaseInitializer firebase;
 
     @Override
     public String esPalabraPalindroma(String palabra) {
-        Date date = Date.from(Instant.now());
-        PruebaDTO prueba = new PruebaDTO();
         String invertida = "";
-        String resultado = "";
-        prueba.setFecha(date);
         prueba.setFuncion("Funcion Palindroma");
         prueba.setVariable_ingreso1(palabra);
         for (int indice = palabra.length() - 1; indice >= 0; indice--) {
@@ -47,28 +46,23 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
             resultado = "No es una palabra palindroma";
         }
         prueba.setResultado(resultado);
-        Map<String, Object> docData = getDocData(prueba);
-        ApiFuture<WriteResult> writeResultApiFuture = getCollection("valores").document().create(docData);
+        registrarEnBD(prueba);
         return resultado;
     }
     
     @Override
     public ArrayList<Integer> serieFibonacci(int numero) {
-        Date date = Date.from(Instant.now());
         ArrayList guardar = new ArrayList<>();
-        PruebaDTO prueba = new PruebaDTO();
-        prueba.setFecha(date);
         prueba.setFuncion("Funcion serie Fibonacci");
         prueba.setVariable_ingreso1(String.valueOf(numero));
- 
+
         for (int i = 0; i <= numero; i++) {
             guardar.add(fibonacciRecursivo(i));
         }
-        System.out.println(guardar);
+        
         String str = guardar.toString().replaceAll("\\[|\\]", "").replaceAll(", ",", ");
         prueba.setResultado(str);
-        Map<String, Object> docData = getDocData(prueba);
-        ApiFuture<WriteResult> writeResultApiFuture = getCollection("valores").document().create(docData);
+        registrarEnBD(prueba);
         return guardar;
     }
     
@@ -83,24 +77,39 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
     }
      
     @Override
-    public String esPrimo(int numero) {
+    public String esPrimo(int numero) {        
+        prueba.setFuncion("Funcion si numero es primo");
+        prueba.setVariable_ingreso1(String.valueOf(numero));
         if (numero == 0 || numero == 1 || numero == 4) {
-          return "No es primo";
+            resultado = "No es primo";
         }
         for (int x = 2; x < numero / 2; x++) {
-          if (numero % x == 0)
-            return "No es primo";
+          if (numero % x == 0){
+              resultado = "No es primo";
+          }else{
+              resultado = "Es primo";
+          }
         }
-        return "Es primo";
+        prueba.setResultado(resultado);
+        registrarEnBD(prueba);
+        return resultado;
     }
     
     @Override
     public Integer multiplosHasta(int numero_multiplo,int numero_hastas) {
         int contador = 0;
+        prueba.setFuncion("Funcion contar multiplos");
+        prueba.setVariable_ingreso1(String.valueOf(numero_multiplo));
+        prueba.setVariable_ingreso2(String.valueOf(numero_hastas));
         for (int i = numero_multiplo; i <= numero_hastas; i++) {
             if (i%numero_multiplo==0) {
                 contador = contador + 1;
             }
+        }
+        prueba.setResultado(String.valueOf(contador));
+        registrarEnBD(prueba);
+         if(prueba.getVariable_ingreso2()!=null){
+            prueba.setVariable_ingreso2(null);
         }
         return contador;
     }
@@ -108,9 +117,13 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
     @Override
     public Integer calcularFactorial(int numero) {
         int contador = 1;
+        prueba.setFuncion("Funcion calcular factorial");
+        prueba.setVariable_ingreso1(String.valueOf(numero));
         for (int i=numero;i>0;i--){
             contador=contador*i;
         }
+        prueba.setResultado(String.valueOf(contador));
+        registrarEnBD(prueba);
         return contador;
     }
     
@@ -119,11 +132,21 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
         docData.put("fecha", prueba.getFecha());
         docData.put("funcion", prueba.getFuncion());
         docData.put("variable_ingreso1", prueba.getVariable_ingreso1());
+        if(prueba.getVariable_ingreso2()!=null){
+            docData.put("variable_ingreso2", prueba.getVariable_ingreso2());
+        }
         docData.put("resultado", prueba.getResultado());
         return docData;
     }
 
     private CollectionReference getCollection(String Colecion) {
         return firebase.getFirestore().collection(Colecion);
+    }
+    
+    private void registrarEnBD(PruebaDTO prueba){
+        Date date = Date.from(Instant.now());
+        prueba.setFecha(date);
+        Map<String, Object> docData = getDocData(prueba);
+        ApiFuture<WriteResult> writeResultApiFuture = getCollection("valores").document().create(docData);
     }
 }
