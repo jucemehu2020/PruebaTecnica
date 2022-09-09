@@ -21,10 +21,4 @@ public interface PruebaManagamentService {
     
     public Integer calcularFactorial(int numero);
     
-    List<PruebaDTO> list();
-    PruebaDTO listById(String id) throws ExecutionException, InterruptedException;
-    Boolean add(PruebaDTO usuario);
-    Boolean edit(String id, PruebaDTO usuario);
-    Boolean delete(String id);
-    
 }
