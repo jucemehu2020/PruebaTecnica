@@ -19,6 +19,8 @@ public interface PruebaManagamentService {
     
     public Integer multiplosHasta(int numero_multiplo,int numero_hastas);
     
+    public Integer calcularFactorial(int numero);
+    
     List<PruebaDTO> list();
     PruebaDTO listById(String id) throws ExecutionException, InterruptedException;
     Boolean add(PruebaDTO usuario);

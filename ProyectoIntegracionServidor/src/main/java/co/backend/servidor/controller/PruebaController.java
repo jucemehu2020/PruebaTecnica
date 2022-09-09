@@ -47,6 +47,11 @@ public class PruebaController {
     public ResponseEntity multiplosHasta(@PathVariable(value = "numero_multiplo") int numero_multiplo,@PathVariable(value = "numero_hastas") int numero_hastas) {
         return new ResponseEntity(service.multiplosHasta(numero_multiplo,numero_hastas), HttpStatus.OK);
     }
+    
+    @GetMapping(value = "/calcularFactorial/{numero}")
+    public ResponseEntity calcularFactorial(@PathVariable(value = "numero") int numero) {
+        return new ResponseEntity(service.calcularFactorial(numero), HttpStatus.OK);
+    }
 
      @GetMapping(value = "/list")
     public ResponseEntity list(){

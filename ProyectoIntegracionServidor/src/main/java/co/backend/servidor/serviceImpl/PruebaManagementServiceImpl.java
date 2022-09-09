@@ -89,6 +89,15 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
         return contador;
     }
     
+    @Override
+    public Integer calcularFactorial(int numero) {
+        int contador = 1;
+        for (int i=numero;i>0;i--){
+            contador=contador*i;
+        }
+        return contador;
+    }
+    
     private Map<String, Object> getDocData(PruebaDTO usuario) {
         Map<String, Object> docData = new HashMap<>();
         docData.put("idUsuario", usuario.getIdUsuario());
