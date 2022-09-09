@@ -13,6 +13,8 @@ public interface PruebaManagamentService {
 
     public String esPalabraPalindroma(String palabra);
     
+    public ArrayList<Integer> serieFibonacci(int numero);
+    
     List<PruebaDTO> list();
     PruebaDTO listById(String id) throws ExecutionException, InterruptedException;
     Boolean add(PruebaDTO usuario);

@@ -32,6 +32,11 @@ public class PruebaController {
     public ResponseEntity esPalabraPalindroma(@PathVariable(value = "palabra") String palabra) {
         return new ResponseEntity(service.esPalabraPalindroma(palabra), HttpStatus.OK);
     }
+    
+    @GetMapping(value = "/serieFibonacci/{numero}")
+    public ResponseEntity serieFibonacci(@PathVariable(value = "numero") int numero) {
+        return new ResponseEntity(service.serieFibonacci(numero), HttpStatus.OK);
+    }
 
      @GetMapping(value = "/list")
     public ResponseEntity list(){

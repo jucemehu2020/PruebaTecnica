@@ -45,6 +45,28 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
         return "No es una palabra palindroma";
     }
     
+    @Override
+    public ArrayList<Integer> serieFibonacci(int numero) {
+        ArrayList guardar = new ArrayList<>();
+ 
+        for (int i = 0; i <= numero; i++) {
+            guardar.add(fibonacciRecursivo(i));
+        }
+        return guardar;
+    }
+    
+     public static int fibonacciRecursivo(int n) {
+ 
+        if (n==0){
+            return 0;  
+        } else if(n==1) {
+            return 1;
+        } else {
+            return fibonacciRecursivo(n-1) + fibonacciRecursivo(n-2);
+        }
+ 
+    }
+    
     private Map<String, Object> getDocData(PruebaDTO usuario) {
         Map<String, Object> docData = new HashMap<>();
         docData.put("idUsuario", usuario.getIdUsuario());
