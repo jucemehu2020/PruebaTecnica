@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Date;
 import java.time.Instant;
+import java.math.BigInteger;
 
 /**
  *
@@ -78,18 +79,22 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
     }
      
     @Override
-    public String esPrimo(int numero) {        
+    public String esPrimo(int numero) {  
+        int bandera = 0;
         prueba.setFuncion("Funcion si numero es primo");
         prueba.setVariable_ingreso1(String.valueOf(numero));
         if (numero == 0 || numero == 1 || numero == 4) {
             resultado = "No es primo";
+            bandera = 1;
         }
         for (int x = 2; x < numero / 2; x++) {
           if (numero % x == 0){
               resultado = "No es primo";
-          }else{
-              resultado = "Es primo";
+              bandera = 1;
           }
+        }
+        if(bandera == 0){
+            resultado = "Es primo";
         }
         prueba.setResultado(resultado);
         registrarEnBD(prueba);
@@ -117,10 +122,10 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
     
     @Override
     public Integer calcularFactorial(int numero) {
-        int contador = 1;
+        Integer contador = 1;
         prueba.setFuncion("Funcion calcular factorial");
         prueba.setVariable_ingreso1(String.valueOf(numero));
-        for (int i=numero;i>0;i--){
+        for (int i=2;i<=numero;i++){
             contador=contador*i;
         }
         prueba.setResultado(String.valueOf(contador));

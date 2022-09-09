@@ -2,6 +2,7 @@ package co.backend.servidor.service;
 
 import java.util.concurrent.ExecutionException;
 import co.backend.servidor.dto.PruebaDTO;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
