@@ -1,8 +1,7 @@
 package co.backend.servidor.serviceImpl;
 
-import co.backend.servidor.dto.UsuarioDTO;
+import co.backend.servidor.dto.PruebaDTO;
 import co.backend.servidor.firebase.FirebaseInitializer;
-import co.backend.servidor.service.UsuarioManagamentService;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
@@ -20,24 +19,33 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import co.backend.servidor.service.PruebaManagamentService;
 
 /**
  *
  * @author julio
  */
 @Service
-public class UsuarioManagementServiceImpl implements UsuarioManagamentService {
+public class PruebaManagementServiceImpl implements PruebaManagamentService {
 
     @Autowired
     private FirebaseInitializer firebase;
 
     @Override
-    public String buscarCursosMatriculados() {
-       
-        return "Hola";
+    public String esPalabraPalindroma(String palabra) {
+        String invertida = "";
+        // Recorremos la original del final al inicio
+        for (int indice = palabra.length() - 1; indice >= 0; indice--) {
+        // Y vamos concatenando cada carácter a la nueva cadena
+            invertida += palabra.charAt(indice);
+        }
+        if(palabra.equals(invertida)){
+            return "Es una palabra palindroma";
+        }
+        return "No es una palabra palindroma";
     }
     
-    private Map<String, Object> getDocData(UsuarioDTO usuario) {
+    private Map<String, Object> getDocData(PruebaDTO usuario) {
         Map<String, Object> docData = new HashMap<>();
         docData.put("idUsuario", usuario.getIdUsuario());
         docData.put("correo", usuario.getCorreo());
@@ -49,10 +57,10 @@ public class UsuarioManagementServiceImpl implements UsuarioManagamentService {
 
 
     @Override
-    public List<UsuarioDTO> list() {
+    public List<PruebaDTO> list() {
 
-        List<UsuarioDTO> response = new ArrayList<>();
-        UsuarioDTO usuario;
+        List<PruebaDTO> response = new ArrayList<>();
+        PruebaDTO usuario;
 
         //ApiFuture<QuerySnapshot> querySnapshotApiFuture = getCollection("usuario").get();
         Query query = firebase.getFirestore().collection("usuario").whereEqualTo("rol", "Docente");
@@ -60,7 +68,7 @@ public class UsuarioManagementServiceImpl implements UsuarioManagamentService {
 
         try {
             for (DocumentSnapshot doc : querySnapshotApiFuture.get().getDocuments()) {
-                usuario = doc.toObject(UsuarioDTO.class);
+                usuario = doc.toObject(PruebaDTO.class);
                 usuario.setId(doc.getId());
                 response.add(usuario);
             }
@@ -72,17 +80,17 @@ public class UsuarioManagementServiceImpl implements UsuarioManagamentService {
     }
 
     @Override
-    public UsuarioDTO listById(String id) throws ExecutionException, InterruptedException {
+    public PruebaDTO listById(String id) throws ExecutionException, InterruptedException {
         return null;
     }
 
     @Override
-    public Boolean add(UsuarioDTO usuario) {
+    public Boolean add(PruebaDTO usuario) {
         return true;
     }
 
     @Override
-    public Boolean edit(String id, UsuarioDTO usuario) {
+    public Boolean edit(String id, PruebaDTO usuario) {
         return true;
     }
 

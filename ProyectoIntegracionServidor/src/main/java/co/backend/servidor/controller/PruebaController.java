@@ -1,7 +1,6 @@
 package co.backend.servidor.controller;
 
-import co.backend.servidor.dto.UsuarioDTO;
-import co.backend.servidor.service.UsuarioManagamentService;
+import co.backend.servidor.dto.PruebaDTO;
 import java.util.concurrent.ExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import co.backend.servidor.service.PruebaManagamentService;
 
 /**
  *
@@ -23,14 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/base")
-public class UsuarioController {
+public class PruebaController {
 
     @Autowired
-    private UsuarioManagamentService service;
+    private PruebaManagamentService service;
 
-    @GetMapping(value = "/buscarCursosMatriculados")
-    public ResponseEntity buscarCursosMatriculados() {
-        return new ResponseEntity(service.buscarCursosMatriculados(), HttpStatus.OK);
+    @GetMapping(value = "/esPalabraPalindroma/{palabra}")
+    public ResponseEntity esPalabraPalindroma(@PathVariable(value = "palabra") String palabra) {
+        return new ResponseEntity(service.esPalabraPalindroma(palabra), HttpStatus.OK);
     }
 
      @GetMapping(value = "/list")
@@ -43,12 +43,12 @@ public class UsuarioController {
         return new ResponseEntity(service.listById(id), HttpStatus.OK);
     }
     @PostMapping(value = "/add")
-    public ResponseEntity add(@RequestBody UsuarioDTO usuario) {
+    public ResponseEntity add(@RequestBody PruebaDTO usuario) {
         return new ResponseEntity(service.add(usuario), HttpStatus.OK);
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity edit(@PathVariable(value = "id") String id, @RequestBody UsuarioDTO usuario){
+    public ResponseEntity edit(@PathVariable(value = "id") String id, @RequestBody PruebaDTO usuario){
         return new ResponseEntity(service.edit(id,usuario), HttpStatus.OK);
     }
 

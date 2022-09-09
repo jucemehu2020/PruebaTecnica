@@ -9,7 +9,7 @@ import lombok.Data;
  * @author 
  */
 @Data
-public class UsuarioDTO {
+public class PruebaDTO {
 
     private String id;
     private Integer idUsuario;
