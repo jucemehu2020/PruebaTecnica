@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import co.backend.servidor.service.PruebaManagamentService;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Date;
+import java.time.Instant;
 
 /**
  *
@@ -27,25 +31,44 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
 
     @Override
     public String esPalabraPalindroma(String palabra) {
+        Date date = Date.from(Instant.now());
+        PruebaDTO prueba = new PruebaDTO();
         String invertida = "";
-        // Recorremos la original del final al inicio
+        String resultado = "";
+        prueba.setFecha(date);
+        prueba.setFuncion("Funcion Palindroma");
+        prueba.setVariable_ingreso1(palabra);
         for (int indice = palabra.length() - 1; indice >= 0; indice--) {
-        // Y vamos concatenando cada carácter a la nueva cadena
             invertida += palabra.charAt(indice);
         }
-        if(palabra.equals(invertida)){
-            return "Es una palabra palindroma";
+        if(palabra.equals(invertida)){                 
+            resultado = "Es una palabra palindroma";
+        }else{
+            resultado = "No es una palabra palindroma";
         }
-        return "No es una palabra palindroma";
+        prueba.setResultado(resultado);
+        Map<String, Object> docData = getDocData(prueba);
+        ApiFuture<WriteResult> writeResultApiFuture = getCollection("valores").document().create(docData);
+        return resultado;
     }
     
     @Override
     public ArrayList<Integer> serieFibonacci(int numero) {
+        Date date = Date.from(Instant.now());
         ArrayList guardar = new ArrayList<>();
+        PruebaDTO prueba = new PruebaDTO();
+        prueba.setFecha(date);
+        prueba.setFuncion("Funcion serie Fibonacci");
+        prueba.setVariable_ingreso1(String.valueOf(numero));
  
         for (int i = 0; i <= numero; i++) {
             guardar.add(fibonacciRecursivo(i));
         }
+        System.out.println(guardar);
+        String str = guardar.toString().replaceAll("\\[|\\]", "").replaceAll(", ",", ");
+        prueba.setResultado(str);
+        Map<String, Object> docData = getDocData(prueba);
+        ApiFuture<WriteResult> writeResultApiFuture = getCollection("valores").document().create(docData);
         return guardar;
     }
     
@@ -90,5 +113,17 @@ public class PruebaManagementServiceImpl implements PruebaManagamentService {
         }
         return contador;
     }
+    
+    private Map<String, Object> getDocData(PruebaDTO prueba) {
+        Map<String, Object> docData = new HashMap<>();
+        docData.put("fecha", prueba.getFecha());
+        docData.put("funcion", prueba.getFuncion());
+        docData.put("variable_ingreso1", prueba.getVariable_ingreso1());
+        docData.put("resultado", prueba.getResultado());
+        return docData;
+    }
 
+    private CollectionReference getCollection(String Colecion) {
+        return firebase.getFirestore().collection(Colecion);
+    }
 }

@@ -1,6 +1,7 @@
 package co.backend.servidor.dto;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import lombok.Data;
 
@@ -11,11 +12,9 @@ import lombok.Data;
 @Data
 public class PruebaDTO {
 
-    private String id;
-    private Integer idUsuario;
-    private String correo;
-    private String rol;
-    private String nombre_completo;
-    private ArrayList<String> cursos;
-    private Integer estado;
+    private Date fecha;
+    private String funcion;
+    private String variable_ingreso1;
+    private String variable_ingreso2;
+    private String resultado;
 }
