@@ -1,13 +1,11 @@
 package co.backend.servidor.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import lombok.Data;
 
 /**
  *
- * @author 
+ * @author Julio Mellizo
  */
 @Data
 public class PruebaDTO {

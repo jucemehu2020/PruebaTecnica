@@ -4,11 +4,6 @@ import co.backend.servidor.dto.PruebaDTO;
 import co.backend.servidor.firebase.FirebaseInitializer;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.FieldValue;
-import com.google.cloud.firestore.Query;
-import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +13,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Date;
 import java.time.Instant;
-import java.math.BigInteger;
 
 /**
  *
- * @author julio
+ * @author Julio Mellizo
  */
 @Service
 public class PruebaManagementServiceImpl implements PruebaManagamentService {

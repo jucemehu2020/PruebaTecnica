@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author julio
+ * @author Julio Mellizo
  */
 @Service
 public class FirebaseInitializer {
