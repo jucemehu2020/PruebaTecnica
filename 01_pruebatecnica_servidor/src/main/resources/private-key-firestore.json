@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pruebatecnica-af424",
+  "private_key_id": "becd63db41d519f6ed18f30d14c48a9ecdc0c998",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC9KlokEiZWYzAL\nUHbs0d/h+3yPJpIHv9dWpIz05FPdrfUnGrZqXEYq87mfVPuICV8nwh8XU8OaI+rI\nPVJwjyNt/5COZ40VO0rp3v3VLL7zKlE6rYPIhPm86MQIcLgxnC5Nr4NLUrQxTZbR\n6mpqBbwdNLzNzQJohF1f3Aj4ede+5qJhPOH+WAREBZO20s7jqX9eBE1xuuaZuItL\n4R0W+rU9dSnzusGUE8VcNw3qfnChVzpBKnpeTp7iChirUTeIdWoCgD/hz0RtbH2l\nazGpTJ9vcxLVr9dBonFnv6qaAFEau0BqGEuh8IZhYoSAHqXyofdzAN/cdavPr5wf\nG19rF9xZAgMBAAECggEAXRxUK04dvcbr1p3gM9hoZYEWwhWfqp3UvmqXkVE0MLkY\nIwvkfzz1Mt4t344Ck2bdhiHokOBjtuL4BWEdy5bBPzsc6eNxj+JUEQL4mW4BfYq2\nWfYfmFtP3BsMpwTovU6dghKiwzgtxtjkpGXIxHAXNJ8JUhmXll+U4ILbjYbX2bgs\nv5OFrEof97fnV99hs78NqToqGCXS43IXeGZXbc7ndA66+63U9KhAYDh6TAn6Z4Tl\nhD6fHT8L/2gZwsUQ65CFV9znKqX6ZzwTlpNFDhQDK2mpxHaMXc5oKP8ofXq5PpV5\naZti2fyV7DPErznCrEQsPlz3O5Z1lFyNf5J2X4zywwKBgQD8os12dYJh0HbAZ2+7\n5oZDngHNmeEDzwUt1WlCngL7BSeDIlvkVvenqGStmjm4BzTHfpCMhznRO76aBseO\nFbDEA0075v50ReL+uZnIctBGej681URkUL+QUW543T+XuusXq6Bq4JkqbO3BmaVq\nE7VwsHnHxB4FiGkqRlABD5eQvwKBgQC/rzAwWJ0Y5FHtyjyfylaEEEpnafy9dIt2\nzl0YTcktZ9+i0qZTa4yNLp51oBDNDIcvrEfOO4hS/SP8Ce6a3nl9AkfJmliHQva0\n/Lj7t/OL7j/9Bf3/niLzL4z/0MP0yrU2fgfJqrFVRkodX5yHkS1d1Y1nA13FTyaH\nFRJhH3vA5wKBgA/b4G35PnAJeArn81mmRPNlrdNMP5XPnxGbffoSlTlQv4Q52e7h\njrZVmcxUDB+DRErppQVNT9HUoEhm+IvwzKHhWy3ReFOwN2mqGP8+RdjGv7123c42\nS3AxzG+F5AIQV8Wqnm1XIAZLxDkM/hdEmXUzftGNfBz4zTE8LLWEVw1dAoGBAIBR\nZpD2wTPIpI/qsmrFqOT/gs93xBmPy0zdGLUMXYBn6O221mFBvfVFIA7d+GFL4bOo\nQOluMPRdQZmXjINgKzPkMupiyKDD0yOVir/3hLJH684WFNLpqbviOSGHP6a/jE/O\nTqhR/CR5yWOgfcjDBvup2d78Aenz8na7RHKAAPhBAoGBAJHEvlJlNScbBVc6UAL3\npBQLFlRflGen1hpIUwyfOwHtgc2nAbDxj8B1/Aq+zdeA5UCTI8vkgvq5TR3ROxQU\nhmYdlF9a3ynGwGMjxIGhh0gChE+XPyLLLSlFZdekafGxfYBIOlT7XwpmyDgtirzH\ngEDq6YXQhhMq7Wvka+/1zJ4k\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-f2gtv@pruebatecnica-af424.iam.gserviceaccount.com",
+  "client_id": "101980549708015641139",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-f2gtv%40pruebatecnica-af424.iam.gserviceaccount.com"
+}

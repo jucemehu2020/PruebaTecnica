@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author julio
+ * @author Julio Mellizo
  */
 @Service
 public class FirebaseInitializer {
@@ -24,7 +24,7 @@ public class FirebaseInitializer {
 
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                .setDatabaseUrl("https://proyecto1-a009e.firebaseio.com/")
+                .setDatabaseUrl("https://pruebatecnica-af424.firebaseio.com/")
                 .build();
 
         if (FirebaseApp.getApps().isEmpty()) {
