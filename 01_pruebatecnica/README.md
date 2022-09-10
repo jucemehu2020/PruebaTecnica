@@ -1,4 +1,4 @@
-# 01_pruebatecnica
+# frontend
 
 ## Project setup
 ```
